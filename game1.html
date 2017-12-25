@@ -21,22 +21,32 @@
   </body>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <script>//defines what must be done once the user slects a choice
+    var choice_was_made = function(i,j){
+      console.log(i);
+      console.log("\n");
+      console.log(j);
+    }
+  </script>
   <script>//Starts game when told to by clicking the "Click to play" button
     var btn1_clicked = 0;
     var choices = ["Rock","Paper","Scissors"];
     $("#btn1").click(function(){
       //alert("Button #1 clicked!");
       if(btn1_clicked == 0){
+        var comp_choice = Math.floor(Math.random()*3);
         $("#div1").append("<p>Choose one:</p>");
         for(var i = 0; i<3;i++){
-              $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
+          $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
+          $(choices[i]).click(function(){
+            //var user_choice = i;
+            choice_was_made(i,comp_choice);
+          }
         }
         /*$("#div2").append( "<br/><button id=rock>Rock</button>");
         $("#div3").append( "<br /><button id=paper>Paper</button>");
         $(div4).append("<br /><button id=rock>Scissor</button><br />");*/
         $("#btn1").val("Don't Click!");
-        var comp_choice = Math.floor(Math.random()*3);
-        
         btn1_clicked = 1;
       }else{
         alert("Why did you click?!");
