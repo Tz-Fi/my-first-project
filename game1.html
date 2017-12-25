@@ -38,7 +38,7 @@
         $("#div1").append("<p>Choose one:</p>");
         for(var i = 0; i<3;i++){
           $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
-          $(choices[i]).click(function(){
+          $("#"+choices[i]).click(function(){
             //var user_choice = i;
             alert(choices[i]+"Was chosen");
             choice_was_made(i,comp_choice);
