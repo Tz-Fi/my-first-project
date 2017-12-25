@@ -23,12 +23,12 @@
   <script>
     var btn1_clicked = 0;
     $("#btn1").click(function(){
-      alert("Button #1 clicked!");
+      //alert("Button #1 clicked!");
       if(btn1_clicked == 0){
-        $("#div1").innerHTML = "<p>Choose one:</p>";
-        $("#div2").innerHTML = "<br/><button id=rock>Rock</button>";
-        $("#div3").innerHTML = "<br /><button id=paper>Paper</button>";
-        $(div4).innerHTML= "<br /><button id=rock>Scissor</button><br />";
+        $("#div1").append("<p>Choose one:</p>");
+        $("#div2").append( "<br/><button id=rock>Rock</button>");
+        $("#div3").append( "<br /><button id=paper>Paper</button>");
+        $(div4).append("<br /><button id=rock>Scissor</button><br />");
         $("#btn1").value = "Don't Click!";
         btn1_clicked = 1;
       }else{
