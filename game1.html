@@ -1,4 +1,5 @@
 <html>
+  <script>var game_on = 1;</script>
   <head>
     <title>
       Game #1: Rock, Paper, Scissors
@@ -26,15 +27,16 @@
       $(div4).append("<br /><h2 style='background-color:yellow;' >You Win!</h2>");
     }
     var tie = function(){
-      
+      $(div4).append("<br /><h2 style='background-color:blue;' >It's a Tie!</h2>");
     }
     var comp_win = function(){
-      
+      $(div4).append("<br /><h2 style='background-color:red;' >You Lose!</h2>");
     }
   </script>
   <script>//defines what must be done once the user slects a choice
     var choices = ["Rock","Paper","Scissors"];
     var choice_was_made = function(i,j){
+      game_on = 0;
       console.log("Users Choice: "+i);
       console.log("Computers Choice: "+j);
       $("#div3").append( "<br /><h5>Your Choide was: "+choices[i]+"<br />Computers choice was: "+choices[j]+"</h5>");
@@ -48,7 +50,8 @@
     }
   </script>
   <script>//Starts game when told to by clicking the "Click to play" button
-    var btn1_clicked = 0;    
+    var btn1_clicked = 0;
+    
     $("#btn1").click(function(){
       //alert("Button #1 clicked!");
       if(btn1_clicked == 0){
@@ -61,18 +64,22 @@
           $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
           $("#"+choices[i]).click(function(){
           //document.getElementById(choices[i]).onclick= function(){
+            if(game_on){
             
-            //var user_choice = i;
-            alert(choices[j]+" was chosen");
-            choice_was_made(j,comp_choice);
+              alert(choices[j]+" was chosen");
+              choice_was_made(j,comp_choice);
+            }
           //};
           });
         }
         
-        $("#btn1").val("Don't Click!");
+        $("#btn1").val("Reset");
         btn1_clicked = 1;
       }else{
-        alert("Why did you click?!");
+        game_on = 1;
+        comp_choice = Math.floor(Math.random()*3);
+        $("#div3").empty();
+        $(div4).empty();
       }
     });
   </script>
