@@ -37,10 +37,11 @@
         var comp_choice = Math.floor(Math.random()*3);
         $("#div1").append("<p>Choose one:</p>");
         for(var i = 0; i<3;i++){
+          let j=i;
           $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
           //$("#"+choices[i]).click(function(){
             $document.getElementById(choices[i]).onclick= function(){
-            let j=i;
+            
             //var user_choice = i;
             alert(choices[j]+" was chosen");
             choice_was_made(j,comp_choice);
