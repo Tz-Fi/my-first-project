@@ -12,6 +12,7 @@
   </head>
   
   <body>
+    <h1>Game #1: Rock, Paper, Scissors:</h1>
     <input type=button value="Click to play!" id=btn1 />
     <div id=div1></div>
     <div id=div2></div>
@@ -20,16 +21,22 @@
   </body>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-  <script>
+  <script>//Starts game when told to by clicking the "Click to play" button
     var btn1_clicked = 0;
+    var choices = ["Rock","Paper","Scissors"];
     $("#btn1").click(function(){
       //alert("Button #1 clicked!");
       if(btn1_clicked == 0){
         $("#div1").append("<p>Choose one:</p>");
-        $("#div2").append( "<br/><button id=rock>Rock</button>");
+        for(var i = 0; i<3;i++){
+              $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
+        }
+        /*$("#div2").append( "<br/><button id=rock>Rock</button>");
         $("#div3").append( "<br /><button id=paper>Paper</button>");
-        $(div4).append("<br /><button id=rock>Scissor</button><br />");
+        $(div4).append("<br /><button id=rock>Scissor</button><br />");*/
         $("#btn1").val("Don't Click!");
+        var comp_choice = Math.floor(Math.random()*3);
+        
         btn1_clicked = 1;
       }else{
         alert("Why did you click?!");
