@@ -12,9 +12,11 @@
   </head>
   
   <body>
-    <div id=div1></div>
     <input type=button value="Click to play!" id=btn1 />
+    <div id=div1></div>
     <div id=div2></div>
+    <div id=div3></div>
+    <div id=div4></div>
   </body>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
@@ -23,12 +25,10 @@
     $("#btn1").click(function(){
       alert("Button #1 clicked!");
       if(btn1_clicked == 0){
-        $("#div1").innerHTML = "
-        <p>Choose one:</p><br/>
-        <button id=rock>Rock</button><br />
-        <button id=paper>Paper</button><br />
-        <button id=rock>Scissor</button><br />
-        ";
+        $("#div1").innerHTML = "<p>Choose one:</p>";
+        $("#div2").innerHTML = "<br/><button id=rock>Rock</button>";
+        $("#div3").innerHTML = "<br /><button id=paper>Paper</button>";
+        $(div4).innerHTML= "<br /><button id=rock>Scissor</button><br />";
         $("#btn1").value = "Don't Click!";
         btn1_clicked = 1;
       }else{
