@@ -39,9 +39,10 @@
         for(var i = 0; i<3;i++){
           $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
           $("#"+choices[i]).click(function(){
+            let j=i;
             //var user_choice = i;
-            alert(choices[i]+"was chosen");
-            choice_was_made(i,comp_choice);
+            alert(choices[j]+" was chosen");
+            choice_was_made(j,comp_choice);
           });
         }
         /*$("#div2").append( "<br/><button id=rock>Rock</button>");
