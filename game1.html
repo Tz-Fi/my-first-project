@@ -22,15 +22,15 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
   <script>//defines what must be done once the user slects a choice
+    var choices = ["Rock","Paper","Scissors"];
     var choice_was_made = function(i,j){
       console.log(i);
-      console.log("\n");
       console.log(j);
+      
     }
   </script>
   <script>//Starts game when told to by clicking the "Click to play" button
-    var btn1_clicked = 0;
-    var choices = ["Rock","Paper","Scissors"];
+    var btn1_clicked = 0;    
     $("#btn1").click(function(){
       //alert("Button #1 clicked!");
       if(btn1_clicked == 0){
@@ -40,7 +40,7 @@
           $("#div2").append( "<br/><button id="+choices[i]+" >"+choices[i]+"</button>");
           $("#"+choices[i]).click(function(){
             //var user_choice = i;
-            alert(choices[i]+"Was chosen");
+            alert(choices[i]+"was chosen");
             choice_was_made(i,comp_choice);
           });
         }
