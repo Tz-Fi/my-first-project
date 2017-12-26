@@ -31,10 +31,10 @@
       This game will run for as long as you want it to, and keep track of how many goats and cars were won. Try various strategies and verify 
       for yourself whether or not it is a good idea to switch.
     </p>
-    <hr />
-    <div id=div1 >
-      <input type=button id=btn1 value=start />
+    <hr />  
+    <div id=div1 >  
     </div>
+    <input type=button id=btn1 value=start />
     <div class=endmatter>
       <hr />
       <a href=. >Homepage</a>
@@ -65,8 +65,8 @@
       game_on = 1;
       $("#div1").append("<h5>The car was behind door #"+q+"<br />You won a "+prize+"</h5><br />");
       $("#div1").append("<h5>With your current strategy, you won "+goats+" goats and "+cars+"cars!");
-      $("#div1").append("<input type=button id=btn1 value=start onClick=function(){give_initial_choice();}");
-      
+      document.getElementById("btn1").type="button";
+      document.getElementById("btn1").value = "Continue";
     }
   </script>
   <script>
