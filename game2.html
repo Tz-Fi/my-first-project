@@ -5,6 +5,7 @@
       var cars = 0;
       var goat = 0;
       var game_on = 1;
+      var prize = "goat";
       var comp_choice = Math.floor(Math.random()*3)+1;
     </script>
     <link rel="stylesheet" type="text/css" href="endmatter.css">
@@ -30,6 +31,7 @@
       This game will run for as long as you want it to, and keep track of how many goats and cars were won. Try various strategies and verify 
       for yourself whether or not it is a good idea to switch.
     </p>
+    <hr />
     <div id=div1 >
       <input type=button id=btn1 value=start />
     </div>
@@ -50,10 +52,37 @@
     */
   </script>
   <script>
+    var show_results = function(r){
+      $("#div1").empty();
+      let q  = comp_choice;
+      if(q==r){
+        prize="car";
+        cars++;
+      }else{
+        prize = "goat";
+        goats++;
+      }
+      game_on = 1;
+      $("#div1").append("<h5>The car was behind door #"+q+"<br />You won a "+prize+"</h5><br />");
+      $("#div1").append("<h5>With your current strategy, you won "+goats+" goats and "+cars+"cars!");
+      $("#div1").append("<input type=button id=btn1 value=start onClick=function(){give_initial_choice();}");
+      
+    }
+  </script>
+  <script>
     var reveal_goat = function(){
       let g = goat;
-      $("#div1").append("<br /><h5>Door #"+g+" has a goat behind it!</h5>");
-      
+      comp_choice<br /><h5>Door #"+g+" has a goat behind it!</h5>");
+      $("#div1").append("<br /><h5>Given this information, what is your current choice?</h5><br />");
+    }
+    var give_second_choice = function(){
+      for(var i = 4; i<= 6; i++){
+         $("#div1").append("<button id=door"+i+">Door #"+i+"</button><br />")
+         let j=i;
+         $("#door"+i).click(function(){
+            show_results(j-3);
+         });  
+      }
     }
   </script>
   <script>
@@ -88,7 +117,7 @@
       }
       
       reveal_goat();
-      //give_second_choice();
+      give_second_choice();
     }
   </script>
   <script>
