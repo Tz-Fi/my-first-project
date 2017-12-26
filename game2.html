@@ -77,7 +77,7 @@
     }
     var give_second_choice = function(){
       for(var i = 4; i<= 6; i++){
-         $("#div1").append("<button id=door"+i+">Door #"+i+"</button><br />")
+         $("#div1").append("<button id=door"+i+">Door #"+i-3+"</button><br />")
          let j=i;
          $("#door"+i).click(function(){
             show_results(j-3);
