@@ -1,5 +1,11 @@
 <html>
   <head>
+    <script>
+      var goats = 0;
+      var cars = 0;
+      var goat = 0;
+      var comp_choice = Math.floor(Math.random()*3)+1;
+    </script>
     <link rel="stylesheet" type="text/css" href="endmatter.css">
     <title>
       Game #2: Monty Holl Riddle
@@ -23,7 +29,9 @@
       This game will run for as long as you want it to, and keep track of how many goats and cars were won. Try various strategies and verify 
       for yourself whether or not it is a good idea to switch.
     </p>
-    <div id=div1 ></div>
+    <div id=div1 >
+      <input type=button id=btn1 value=start />
+    </div>
     <div class=endmatter>
       <hr />
       <a href=. >Homepage</a>
@@ -33,5 +41,65 @@
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
   <script>
+    /*
+    give_initial_choice();
+    choice_1_made() = reveal_goat() + give_second_choice();
+    show_results();
+    give_initial_choice();
+    */
+  </script>
+  <script>
+    var reveal_goat = function(){
+      let g = goat;
+      $("#div1").append("<br /><h5>Door #"+g+" has a goat behind it!</h5>"
+      
+    }
+  </script>
+  <script>
+    var choice_1_made = function(k){
+      let c = comp_choice;
+      if(c==3){
+        if(k==2){
+          goat=1;
+        }else if(k==1){
+          goat=2;
+        }else{
+          goat = math.floor(Math.random()*2+1);//1 or 2
+        }
+      }else if(c==2){
+        if(k==1){
+          goat=3;
+        }else if(k==3){
+          goat=1;
+        }else{
+          goat= Math.floor(Math.random()*2)*2+1;//1 or 3
+        }  
+      }else if(c==1){
+          if(k==2){
+            goat=3;
+          }else if(k==3){
+            goat = 2;
+          }else{
+            goat = Math.floor(Math.random()*2)+2;//2 or 3
+          }
+      }else{
+        throw new Error("Invalid Choice for Door");
+      }
+      
+      reveal_goat();
+      //give_second_choice();
+    }
+  </script>
+  <script>
+    var give_initial_choice = function(){
+      $("#div1").append("<h5>Choose A Door:</h5>,br />");
+      for(var i = 1; i<= 3; i++){
+        $("#div1").append("<button id=door"+i+">Door #"+i+"</button><br />")
+        let j=i;
+        $("#door"+i).click(function(){
+          choice_1_made(j);
+        });
+      }
+    }
   </script>
 </html>
