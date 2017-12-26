@@ -4,6 +4,7 @@
       var goats = 0;
       var cars = 0;
       var goat = 0;
+      var game_on = 1;
       var comp_choice = Math.floor(Math.random()*3)+1;
     </script>
     <link rel="stylesheet" type="text/css" href="endmatter.css">
@@ -92,13 +93,18 @@
   </script>
   <script>
     var give_initial_choice = function(){
-      $("#div1").append("<h5>Choose A Door:</h5>,br />");
+      $("#div1").append("<h5>Choose A Door:</h5><br />");
       for(var i = 1; i<= 3; i++){
-        $("#div1").append("<button id=door"+i+">Door #"+i+"</button><br />")
-        let j=i;
-        $("#door"+i).click(function(){
-          choice_1_made(j);
-        });
+         $("#div1").append("<button id=door"+i+">Door #"+i+"</button><br />")
+         let j=i;
+         $("#door"+i).click(function(){
+           if(game_on){
+            choice_1_made(j);
+            game_on = 0;
+           }
+         });
+          
+        
       }
     }
     $("#btn1").click(function(){
