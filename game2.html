@@ -7,6 +7,7 @@
       var game_on = 1;
       var prize = "goat";
       var comp_choice = Math.floor(Math.random()*3)+1;
+      var temp;
     </script>
     <link rel="stylesheet" type="text/css" href="endmatter.css">
     <title>
@@ -77,7 +78,8 @@
     }
     var give_second_choice = function(){
       for(var i = 4; i<= 6; i++){
-         $("#div1").append("<button id=door"+i+">Door #"+i-3+"</button><br />")
+        temp = i - 3 ;
+         $("#div1").append("<button id=door"+i+">Door #"+temp+"</button><br />")
          let j=i;
          $("#door"+i).click(function(){
             show_results(j-3);
