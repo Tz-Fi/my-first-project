@@ -13,4 +13,6 @@ Uses files: game2.html, game2.js, endmatter.css
 Game 2 is a simulator for the Monty Holl problem.
 Continues for as long as the user is willing to play.
 
+
+
 Other games will hopefully be added later.
