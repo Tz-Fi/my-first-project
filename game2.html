@@ -59,7 +59,7 @@
       }
       game_on = 1;//Allows another initial choice, for the next round, should the user choose to continue.
       $("#div1").append("<h5>The car was behind door #"+q+"<br />You won a "+prize+"</h5><br />");
-      $("#div1").append("<h5>With your current strategy, you won "+goats+" goats and "+cars+"cars!");
+      $("#div1").append("<h5>With your current strategy, you won "+goats+" goats and "+cars+" cars!");
       document.getElementById("btn1").type="button";//Reveals btn1
       document.getElementById("btn1").value = "Continue";
       comp_choice = Math.floor(Math.random()*3)+1;//Resets the door with the car behind it to a random value 1-3, for next round.
