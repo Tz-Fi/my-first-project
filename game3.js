@@ -1,3 +1,14 @@
+var initialize = function(){
+  var enemy_positions_i = array();
+  var enemy_positions_j = array();
+  for(var i = 0; i<5; i++){
+    enemy_positions_i.push(Math.floor(Math.random(0,5))+1);
+    enemy_positions_j.push(Math.floor(Math.random(0,5))+1);
+  }
+  //need to verify that a set of coordinates isn't repeated
+}
+
+
 var bomb = function(i,j){
   alert("bombing "+i+"x"+j+"!");
   
