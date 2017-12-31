@@ -5,8 +5,8 @@ var n = 5;
 var initialize = function(){
   
   for(var i = 0; i<n; i++){
-    enemy_positions_i[i] = (Math.floor(Math.random(0,5))+1);
-    enemy_positions_j[i] = (Math.floor(Math.random(0,5))+1);
+    enemy_positions_i[i] = Math.floor(Math.random()*5)+1;
+    enemy_positions_j[i] = Math.floor(Math.random()*5)+1;
   }
   //need to verify that a set of coordinates isn't repeated
 }
