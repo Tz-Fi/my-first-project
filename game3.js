@@ -1,7 +1,8 @@
 var initialize = function(){
-  var enemy_positions_i = array();
-  var enemy_positions_j = array();
-  for(var i = 0; i<5; i++){
+  var enemy_positions_i = [];
+  var enemy_positions_j = [];
+  var n = 5;
+  for(var i = 0; i<n; i++){
     enemy_positions_i.push(Math.floor(Math.random(0,5))+1);
     enemy_positions_j.push(Math.floor(Math.random(0,5))+1);
   }
