@@ -5,7 +5,7 @@ var bomb = function(i,j){
 }
 
 var set_game = function(){
-  $("#div1").append("<table id=target style='margin:1em auto;'>");
+  $("#div1").append("<table id=target style='margin-left:auto;margin-right:auto;'>");
   for(var i = 1; i <= 5; i++){
     $("#div1").append("<tr id=row"+i+" >");
     for(var j = 1; j <= 5; j++){
@@ -20,7 +20,7 @@ var set_game = function(){
   }
   $("#div1").append("</table><br />");
   
-  $("#div1").append("<table id=defender style='margin:1em auto;' >");
+  $("#div1").append("<table id=defender style='margin-left:auto;margin-right:auto;' >");
   for(var i = 1; i <= 5; i++){
     $("#div1").append("<tr id=row"+i+" >");
     for(var j = 1; j <= 5; j++){
