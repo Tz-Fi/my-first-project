@@ -1,3 +1,9 @@
+var bomb = function(i,j){
+  alert("bombing "+i+"x"+j+"!");
+  
+  
+}
+
 var set_game = function(){
   $("#div1").append("<table id=target style='margin:1em auto;'>");
   for(var i = 1; i <= 5; i++){
@@ -6,7 +12,9 @@ var set_game = function(){
       $("#div1").append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">"+i+"x"+j+" </button></td>");
       let m = i;
       let n = j;
-      $("#btnrow"+i+"column"+j).click(bomb(m,n););
+      $("#btnrow"+i+"column"+j).click(function(){
+        bomb(m,n);
+      });  
     }
     $("#div1").append("</tr>");
   }
@@ -23,8 +31,4 @@ var set_game = function(){
   $("#div1").append("</table>");
 }
 
-var bomb = function(i,j){
-  alert("bombing "+i+"x"+j+"!");
-  
-  
-}
+
