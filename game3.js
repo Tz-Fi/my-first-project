@@ -10,7 +10,7 @@ var set_game = function(){
   for(var i = 1; i <= 5; i++){
     $("#target").append("<tr id=row"+i+" ></tr>");
     for(var j = 1; j <= 5; j++){
-      $("#row"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">"+i+"x"+j+" </button></td>");
+      $("#row"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">?</button></td>");
       let m = i;
       let n = j;
       $("#btnrow"+i+"column"+j).click(function(){
@@ -23,7 +23,7 @@ var set_game = function(){
   for(var i = 1; i <= 5; i++){
     $("#defender").append("<tr id=drow"+i+" ></tr>");
     for(var j = 1; j <= 5; j++){
-      $("#drow"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">"+i+"x"+j+" </button></td>");
+      $("#drow"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">+</button></td>");
     }
   }
 }
