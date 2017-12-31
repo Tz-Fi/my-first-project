@@ -1,5 +1,5 @@
 var set_game = function(){
-  $(#div1).append("<table id=target style="width:50%">");
+  $(#div1).append("<table id=target style='width:50%'>");
   for(var i = 0; i <= 4; i++){
     $(#div1).append("<tr id=row"+i+" >");
     for(var j = 0; j <= 4; j++){
@@ -9,7 +9,7 @@ var set_game = function(){
   }
   $(#div1).append("</table>");
   
-  $(#div1).append("<table id=defender style="width:100%" >");
+  $(#div1).append("<table id=defender style='width:100%' >");
   for(var i = 0; i <= 4; i++){
     $(#div1).append("<tr id=row"+i+" >");
     for(var j = 0; j <= 4; j++){
