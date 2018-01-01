@@ -23,7 +23,19 @@ var initialize = function(){
     enemy_positions_i[i] = Math.floor(Math.random()*5)+1;
     enemy_positions_j[i] = Math.floor(Math.random()*5)+1;
   }
-  //need to verify that a set of coordinates isn't repeated
+  var recheck = 1;//flag if the arrays require rechecking;
+  while(recheck){
+    recheck = 0;
+    for(i = 0; i<n; i++){
+      for(var j = i+1; j<n; j++){
+        if(enemy_positions_i[i]==enemy_positions_i[j] &&enemy_positions_j[i]==enemy_positions_j[j]){
+          enemy_positions_i[j] = Math.floor(Math.random()*5)+1;
+          enemy_positions_j[j] = Math.floor(Math.random()*5)+1;
+          recheck = 1;
+        }
+      }
+    }
+   }
 }
 
 
