@@ -26,7 +26,7 @@ var initialize = function(){
   var recheck = 1;//flag if the arrays require rechecking;
   while(recheck){
     recheck = 0;
-    for(i = 0; i<n; i++){
+    for(var i = 0; i<n; i++){
       for(var j = i+1; j<n; j++){
         if(enemy_positions_i[i]==enemy_positions_i[j] &&enemy_positions_j[i]==enemy_positions_j[j]){
           enemy_positions_i[j] = Math.floor(Math.random()*5)+1;
@@ -40,9 +40,18 @@ var initialize = function(){
 
 
 var bomb = function(i,j){
-  alert("bombing "+i+"x"+j+"!");
   
-  
+  disp("You chose to fire at: "+i+","+j+"!");
+  for(var k = 0; k<n; k++){
+    if(enemy_positions_i[k] == i && enemy_positions_j[k] == j){
+      disp("You hit an enemy submarine!");
+      enemy_positions_i.splice(k,1);
+      enemy_positions_j.splice(k,1);
+      $("#row"+i+"column"+j).empty();
+      $("#row"+i+"column"+j).append("X");
+    }
+  }
+  //enemy_bomb();
 }
 
 var set_game = function(){
