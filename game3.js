@@ -6,6 +6,7 @@ var string_stack = [];
 
 var disp = function(string){
   string_stack.switch("<br />"+string);
+  $("#console").empty();
   for(i = 0; i< string_stack.length; i++){
      $("#console").append(string_stack[i]);
      if(i > 18){
