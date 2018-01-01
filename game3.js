@@ -54,9 +54,8 @@ var bomb = function(i,j){
       $("#row"+i+"column"+j).empty();
       $("#row"+i+"column"+j).append("<div style='color:red;'>X</div>");
     }
-  disp("You chose to fire at: "+i+","+j+"!");    
-    
   }
+  disp("You chose to fire at: "+i+","+j+"!");
   //enemy_bomb();
 }
 
