@@ -80,10 +80,10 @@ var set_game = function(){
     for(var j = 1; j <= N; j++){
       $("#row"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">?</button></td>");
       let m = i;
-      let n = j;
+      let l = j;
       $("#btnrow"+i+"column"+j).click(function(){
         if(game_on){
-          bomb(m,n);
+          bomb(m,l);
         }else{
           disp(" click on your map at the desired positions");
           disp("To select your positions,");
