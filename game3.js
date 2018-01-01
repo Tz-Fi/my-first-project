@@ -9,7 +9,7 @@ var disp = function(string){
   $("#console").empty();
   for(i = 0; i< string_stack.length; i++){
      $("#console").append(string_stack[i]);
-     if(i > 17){
+     if(i > 16){
        break;
      }
   }
