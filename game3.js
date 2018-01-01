@@ -63,9 +63,9 @@ var bomb = function(i,j){
 var select = function(i,j){
   $("#drow"+i+"column"+j).empty();
   $("#drow"+i+"column"+j).append("<div></div>");
-  user_positions_i.unshift(i);
-  user_positions_j.unshift(j);
-  if(user_positions_i.length = n){
+  user_positions_i.push(i);
+  user_positions_j.push(j);
+  if(user_positions_i.length == n){
     game_on = 1;
   }
   
