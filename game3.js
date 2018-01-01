@@ -99,10 +99,10 @@ var set_game = function(){
     for(var j = 1; j <= N; j++){
       $("#drow"+i).append("<td id=drow"+i+"column"+j+" ><button id=dbtnrow"+i+"column"+j+">+</button></td>");
       let m = i;
-      let n = j;
+      let l = j;
       $("#dbtnrow"+i+"column"+j).click(function(){
         if(user_positons_i.length<n){
-          select(m,n);
+          select(m,l);
         }
       }); 
     }
