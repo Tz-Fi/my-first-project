@@ -101,8 +101,10 @@ var set_game = function(){
       let m = i;
       let l = j;
       $("#dbtnrow"+i+"column"+j).click(function(){
-        if(user_positons_i.length<n){
+        if(user_positions_i.length<n){
           select(m,l);
+        }else{
+          disp("You have already chosen the maximum number of submarines");
         }
       }); 
     }
