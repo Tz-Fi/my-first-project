@@ -40,15 +40,16 @@ var initialize = function(){
 
 
 var bomb = function(i,j){
-  
+  $("#row"+i+"column"+j).empty();
   disp("You chose to fire at: "+i+","+j+"!");
-  for(var k = 0; k<n; k++){
+  for(var k = 0; k<N; k++){
     if(enemy_positions_i[k] == i && enemy_positions_j[k] == j){
       disp("You hit an enemy submarine!");
       enemy_positions_i.splice(k,1);
-      enemy_positions_j.splice(k,1);
-      $("#row"+i+"column"+j).empty();
+      enemy_positions_j.splice(k,1);   
       $("#row"+i+"column"+j).append("X");
+    }else{
+      $("#row"+i+"column"+j).append("0");
     }
   }
   //enemy_bomb();
