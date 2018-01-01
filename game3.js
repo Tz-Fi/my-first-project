@@ -1,7 +1,7 @@
 var enemy_positions_i = [];
 var enemy_positions_j = [];
-var user_positons_i = [];
-var user_positons_j = [];
+var user_positions_i = [];
+var user_positions_j = [];
 var n = 5;//number of ships
 var N = 7;//Length of map
 var string_stack = [];
@@ -63,9 +63,9 @@ var bomb = function(i,j){
 var select = function(i,j){
   $("#drow"+i+"column"+j).empty();
   $("#drow"+i+"column"+j).append("<div></div>");
-  user_positons_i.push(i);
-  user_positons_j.push(j);
-  if(user_positons_i.length = n){
+  user_positions_i.unshift(i);
+  user_positions_j.unshift(j);
+  if(user_positions_i.length = n){
     game_on = 1;
   }
   
