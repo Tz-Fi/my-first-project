@@ -2,9 +2,17 @@ var enemy_positions_i = [];
 var enemy_positions_j = [];
 var n = 5;//number of ships
 var N = 5;//Length of map
+var string_stack = [];
 
 var disp = function(string){
-  $("#console").append("<br />"+string);
+  string_stack.switch("<br />"+string);
+  for(i = 0; i< string_stack.length; i++){
+     $("#console").append(string_stack[i]);
+     if(i > 18){
+       break;
+     }
+  }
+ 
 }
 
 
