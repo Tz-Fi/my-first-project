@@ -3,6 +3,8 @@ var enemy_positions_j = [];
 var n = 5;//number of ships
 var N = 5;//Length of map
 var string_stack = [];
+var game_on = 0;
+
 
 var disp = function(string){
   string_stack.unshift("<br />"+string);
@@ -67,7 +69,13 @@ var set_game = function(){
       let m = i;
       let n = j;
       $("#btnrow"+i+"column"+j).click(function(){
-        bomb(m,n);
+        if(game_on){
+          bomb(m,n);
+        }else{
+          disp(" click on your map at the desired positions");
+          disp("To select your positions,");
+          disp("Please select your positions before attacking. ");
+        }
       });  
     }
   }
@@ -81,5 +89,6 @@ var set_game = function(){
   }
   initialize();//sets enemy positions.
 }
+
 
 
