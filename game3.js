@@ -77,6 +77,7 @@ var set_game = function(){
       $("#drow"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">+</button></td>");
     }
   }
+  initialize();//sets enemy positions.
 }
 
 
