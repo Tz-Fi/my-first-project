@@ -66,7 +66,7 @@ var enemy_bomb = function(){
   
   for(var g = 0; g<n; g++){
       if( user_positions_j[g] == j && user_positions_i[g] == i){
-        $("#drow"+i+"column"+j).clear();
+        $("#drow"+i+"column"+j).empty();
         disp("Enemy sunk your submarine ");
       }
   }
