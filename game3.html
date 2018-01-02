@@ -21,6 +21,14 @@
         background-color: #000000;
         color: #00aaaa;
       }
+      #stats {
+        background-color: #ffffff;
+        color:"#0000ff";
+        float: left;
+      }
+      .right_text {
+        text-align:right;
+      }
     </style>
   </head>
   <body>
@@ -29,6 +37,17 @@
     </div>
     <p id=console class=console>
     </p>
+    <table id=stats>
+      <tr>
+        <td class=right_text>Max # of Submarines:</td><td id=n></td>
+      </tr>
+      <tr>
+        <td class=right_text> # of enemy Submarines left:</td><td id=enemy_i></td>
+      </tr>
+      <tr>
+        <td class=right_text> # of your Submarines left:</td><td id=user_i></td>
+      </tr>
+    </table>
     <div id=div1>
     </div>
     
