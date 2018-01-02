@@ -6,6 +6,8 @@ var n = 5;//number of ships
 var N = 7;//Length of map
 var string_stack = [];
 var game_on = 0;
+var enemy_bombed_i = [];//stores i coordinates that were bombed by enemy
+var enemy_bombed_j = [];//stores j coordinates that were bombed by enemy
 
 var update_stats = function(){
   $("#enemy_i").html(enemy_positions_i.length);
@@ -28,8 +30,8 @@ var disp = function(string){
 var initialize = function(){
   
   for(var i = 0; i<n; i++){
-    enemy_positions_i[i] = Math.floor(Math.random()*5)+1;
-    enemy_positions_j[i] = Math.floor(Math.random()*5)+1;
+    enemy_positions_i[i] = Math.floor(Math.random()*N)+1;
+    enemy_positions_j[i] = Math.floor(Math.random()*N)+1;
   }
   var recheck = 1;//flag if the arrays require rechecking;
   while(recheck){
@@ -37,15 +39,39 @@ var initialize = function(){
     for(var i = 0; i<n; i++){
       for(var j = i+1; j<n; j++){
         if(enemy_positions_i[i]==enemy_positions_i[j] &&enemy_positions_j[i]==enemy_positions_j[j]){
-          enemy_positions_i[j] = Math.floor(Math.random()*5)+1;
-          enemy_positions_j[j] = Math.floor(Math.random()*5)+1;
+          enemy_positions_i[j] = Math.floor(Math.random()*N)+1;
+          enemy_positions_j[j] = Math.floor(Math.random()*N)+1;
           recheck = 1;
         }
       }
     }
    }
 }
-
+var enemy_bomb = function(){
+  let i = Math.floor(Math.random()*N)+1;
+  let j = Math.floor(Math.random()*N)+1;
+  var reverify = 1;
+  while(reverify){
+    reverify = 0;
+    for(var g = 0; g<enemy_bombed_j.length; g++){
+      if( enemy_bombed_j[g] == j && enemy_bombed_i[g] == i){
+        i = Math.floor(Math.random()*N)+1;
+        j = Math.floor(Math.random()*N)+1;
+        reverify = 1;
+      }
+    }
+  }
+  enemy_bombed_j.push(j);
+  enemy_bombed_i.push(i);
+  
+  for(var g = 0; g<n; g++){
+      if( user_positions_j[g] == j && user_positions_i[g] == i){
+        $("#drow"+i+"column"+j).clear();
+        disp("Enemy sunk your submarine ");
+      }
+  }
+  disp("Enemy bombed "+i+","+j);
+}
 
 var bomb = function(i,j){
   $("#row"+i+"column"+j).empty();
@@ -60,7 +86,7 @@ var bomb = function(i,j){
     }
   }
   disp("You chose to fire at: "+i+","+j+"!");
-  //enemy_bomb();
+  enemy_bomb();
 }
 
 var select = function(i,j){
