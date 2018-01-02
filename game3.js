@@ -7,6 +7,10 @@ var N = 7;//Length of map
 var string_stack = [];
 var game_on = 0;
 
+var update_stats = function(){
+  $("#enemy_i").html(enemy_positions_i.length);
+  $("#user_i").html(user_positions_i.length);
+}
 
 var disp = function(string){
   string_stack.unshift("<br />"+string);
@@ -72,6 +76,7 @@ var select = function(i,j){
 
 
 var set_game = function(){
+  $("#n").html(n);
   $("#div1").append("<h2>Enemy Map:</h2>");
   $("#div1").append("<table id=target style='margin-left:auto;margin-right:auto;' ></table>");
   for(var i = 1; i <= N; i++){
