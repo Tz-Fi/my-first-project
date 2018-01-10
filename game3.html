@@ -4,33 +4,10 @@
       Game #3: Battleship
     </title>
     <link rel="stylesheet" type="text/css" href="endmatter.css">
+	<link rel="stylesheet" type="text/css" href="game3.css">
     <!--<link rel="stylesheet" type="text/css" href="console.css">-->
     <link rel="icon" type="image/jpg" href="https://i.kinja-img.com/gawker-media/image/upload/s--nBkdypRs--/c_scale,f_auto,fl_progressive,q_80,w_800/wqpsdx0ntocmx2lv2juq.jpg" />
-    <style>
-      body{
-        text-align:center;
-        background-color:#ff9898;
-      }
-      table, th, td {
-        border: 1px solid black;
-      }
-      #console {
-        height:375px;
-        width: 300px;
-        float: right;
-        background-color: #000000;
-        color: #00aaaa;
-      }
-      #stats {
-        background-color: #ffffff;
-        color:"#0000ff";
-        float: left;
-      }
-      .right_text {
-        text-align:right;
-        width:90px;
-      }
-    </style>
+
   </head>
   <body>
     <div id=temp>
@@ -40,7 +17,7 @@
     </p>
     <table id=stats>
       <tr>
-        <th style="width:120px;colspan=2">Stats:</th>
+        <th style="width:120px" colspan=2 >Stats:</th>
       </tr>
       <tr>
         <td class=right_text>Max # of Submarines:</td><td id=n></td>
@@ -53,6 +30,8 @@
       </tr>
     </table>
     <div id=div1>
+		<table id=main_table style='margin-left:auto;margin-right:auto;' >
+		</table>
     </div>
     
     
@@ -63,6 +42,6 @@
       &copy;Filler
     </div>
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <script src="jquery.js"></script> 
   <script src="game3.js"></script>
 </html>

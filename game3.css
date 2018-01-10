@@ -1,0 +1,26 @@
+body{
+	text-align:center;
+	background-color:#ff9898;
+}
+table, th, td {
+	border: 1px solid black;
+}
+#console {
+	height:375px;
+	width: 300px;
+	float: right;
+	background-color: #000000;
+	color: #ffff00;
+}
+#stats {
+	background-color: #ffffff;
+	color:"#0000ff";
+	float: left;
+}
+.right_text {
+	text-align:right;
+	width:90px;
+}
+#n {
+	width:30px;
+}

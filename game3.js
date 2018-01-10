@@ -8,12 +8,31 @@ var string_stack = [];
 var game_on = 0;
 var enemy_bombed_i = [];//stores i coordinates that were bombed by enemy
 var enemy_bombed_j = [];//stores j coordinates that were bombed by enemy
+var command;
 
-var update_stats = function(){
-  $("#enemy_i").html(enemy_positions_i.length);
-  $("#user_i").html(user_positions_i.length);
+
+var initialize_consol = function(){
+	for(consol_id = 0; consol_id< 18; consol_id++){
+		$("#console").prepend("<div id=id"+consol_id+" ></div>");
+	}
+	
 }
 
+var disp = function(string){
+	let temp_id = consol_id-17;
+	$("#id"+temp_id).remove();
+	consol_id++;
+	$("#console").prepend("<div id=id"+consol_id+" ></div>");
+	//$("#id"+consol_id).append("<br />");
+	command = "$('#id"+consol_id+"')";
+	for(var w = 0; w < string.length;w++){
+		//command+= ".append('"+string[w]+"').delay(500)";
+		command+= ".delay(1000/60).queue(function (next"+w+") {$(this).append('"+string[w]+"');next"+w+"();})";
+	}
+	command+=";";
+	eval(command);
+}
+/*
 var disp = function(string){
   string_stack.unshift("<br />"+string);
   $("#console").empty();
@@ -25,7 +44,16 @@ var disp = function(string){
   }
  
 }
+*/
 
+var update_stats = function(){
+  $("#enemy_i").html(enemy_positions_i.length);
+  $("#user_i").html(user_positions_i.length);
+  if(user_positions_i.length ==0 || enemy_positions_i.length == 0){
+	disp("Look at the table to your left to determine who");
+	disp("Someone won, and someone lost,");
+  }
+}
 
 var initialize = function(){
   
@@ -63,19 +91,27 @@ var enemy_bomb = function(){
   }
   enemy_bombed_j.push(j);
   enemy_bombed_i.push(i);
-  
+  var miss = 1;
   for(var g = 0; g<n; g++){
       if( user_positions_j[g] == j && user_positions_i[g] == i){
         $("#drow"+i+"column"+j).empty();
         disp("Enemy sunk your submarine ");
+		user_positions_j.splice(g,1);
+		user_positions_i.splice(g,1);
+		miss = 0;
       }
   }
-  disp("Enemy bombed "+i+","+j);
+  if(miss){
+	 $("#drow"+i+"column"+j).html("<img src=sea1.jpg style='height:20px;width:25px;' />");
+  }
+  disp("Enemy chose to fire at: "+i+","+j+"!");
+  update_stats();
 }
 
 var bomb = function(i,j){
   $("#row"+i+"column"+j).empty();
   $("#row"+i+"column"+j).append("0");
+  var hit = 0;
   for(var k = 0; k<N; k++){
     if(enemy_positions_i[k] == i && enemy_positions_j[k] == j){
       disp("You hit an enemy submarine!");
@@ -83,7 +119,11 @@ var bomb = function(i,j){
       enemy_positions_j.splice(k,1);   
       $("#row"+i+"column"+j).empty();
       $("#row"+i+"column"+j).append("<div style='color:red;'>X</div>");
+	  hit = 1;
     }
+  }
+  if(!hit){
+	$("#row"+i+"column"+j).html("<img src=sea1.jpg style='height:20px;width:25px;' />");
   }
   disp("You chose to fire at: "+i+","+j+"!");
   enemy_bomb();
@@ -91,24 +131,38 @@ var bomb = function(i,j){
 
 var select = function(i,j){
   $("#drow"+i+"column"+j).empty();
-  $("#drow"+i+"column"+j).append("<div></div>");
+  $("#drow"+i+"column"+j).append("<img src=submarine1.jpg style='height:20px;width:25px;' />");
   user_positions_i.push(i);
   user_positions_j.push(j);
+  
   if(user_positions_i.length == n){
     game_on = 1;
+	var replace = 1;
+	for(var b = 1; b <= N; b++){
+		for(var h = 1; h <= N; h++){
+			replace = 1;
+			for(var i=0; i < n; i++){
+				if(user_positions_i[i] == h&& user_positions_j[i] == b){
+					replace = 0;
+				}	
+			}
+			if(replace){
+				$("#drow"+h+"column"+b).html("<img src=sea3.jpg style='height:20px;width:25px;' />");
+			}
+		}
+	}
   }
   
 }
 
-
 var set_game = function(){
   $("#n").html(n);
-  $("#div1").append("<h2>Enemy Map:</h2>");
-  $("#div1").append("<table id=target style='margin-left:auto;margin-right:auto;' ></table>");
+  $("#main_table").append("<h2>Enemy Map:</h2>");
+  $("#main_table").append("<table id=target ></table>");
   for(var i = 1; i <= N; i++){
     $("#target").append("<tr id=row"+i+" ></tr>");
     for(var j = 1; j <= N; j++){
-      $("#row"+i).append("<td id=row"+i+"column"+j+" ><button id=btnrow"+i+"column"+j+">?</button></td>");
+      $("#row"+i).append("<td id=row"+i+"column"+j+" ><button style='height:20px;width:25px;' id=btnrow"+i+"column"+j+">?</button></td>");
       let m = i;
       let l = j;
       $("#btnrow"+i+"column"+j).click(function(){
@@ -122,25 +176,24 @@ var set_game = function(){
       });  
     }
   }
-  $("#div1").append("<h2>Your Map:</h2>")
-  $("#div1").append("<table id=defender style='margin-left:auto;margin-right:auto;' ></table>");
+  $("#main_table").append("<h2>Your Map:</h2>")
+  $("#main_table").append("<table id=defender ></table>");
   for(var i = 1; i <= N; i++){
     $("#defender").append("<tr id=drow"+i+" ></tr>");
     for(var j = 1; j <= N; j++){
-      $("#drow"+i).append("<td id=drow"+i+"column"+j+" ><button id=dbtnrow"+i+"column"+j+">+</button></td>");
+      $("#drow"+i).append("<td id=drow"+i+"column"+j+" ><button style='height:20px;width:25px;' id=dbtnrow"+i+"column"+j+">+</button></td>");
       let m = i;
       let l = j;
       $("#dbtnrow"+i+"column"+j).click(function(){
         if(user_positions_i.length<n){
           select(m,l);
-        }else{
-          disp("You have already chosen the maximum number of submarines");
         }
       }); 
     }
   }
+  initialize_consol();
   initialize();//sets enemy positions.
 }
 
-
+set_game();
 
