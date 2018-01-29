@@ -4,7 +4,7 @@ var user_positions_i = [];
 var user_positions_j = [];
 var n = 5;//number of ships
 var N = 7;//Length of map
-var string_stack = [];
+//var string_stack = [];
 var game_on = 0;
 var enemy_bombed_i = [];//stores i coordinates that were bombed by enemy
 var enemy_bombed_j = [];//stores j coordinates that were bombed by enemy
@@ -12,7 +12,8 @@ var command;
 
 
 var initialize_consol = function(){
-	for(consol_id = 0; consol_id< 18; consol_id++){
+	$("#console").empty();
+	for(consol_id = 0; consol_id < 18; consol_id++){
 		$("#console").prepend("<div id=id"+consol_id+" ></div>");
 	}
 	
@@ -50,8 +51,7 @@ var update_stats = function(){
   $("#enemy_i").html(enemy_positions_i.length);
   $("#user_i").html(user_positions_i.length);
   if(user_positions_i.length ==0 || enemy_positions_i.length == 0){
-	disp("Look at the table to your left to determine who");
-	disp("Someone won, and someone lost,");
+	end_game();
   }
 }
 
@@ -155,7 +155,7 @@ var select = function(i,j){
   
 }
 
-var set_game = function(){
+function set_game () {
   $("#n").html(n);
   $("#main_table").append("<h2>Enemy Map:</h2>");
   $("#main_table").append("<table id=target ></table>");
@@ -169,7 +169,7 @@ var set_game = function(){
         if(game_on){
           bomb(m,l);
         }else{
-          disp(" click on your map at the desired positions");
+          disp("click on your map at the desired positions");
           disp("To select your positions,");
           disp("Please select your positions before attacking. ");
         }
@@ -195,5 +195,28 @@ var set_game = function(){
   initialize();//sets enemy positions.
 }
 
-set_game();
+var initialize2 = function(){
+	N = document.getElementById("select_N").value;
+	n = document.getElementById("select_n").value;
+	$("#initialize").css("display","none");
+	$("#div1").css("display","inline");
+	$("#stats").css("display","inline");
+	$("#console").css("display","inline");
+	set_game();
+}
 
+function end_game (){
+	if(enemy_positions_i.length == user_positions_i.length){
+		alert("tie");
+	}else if(enemy_positions_i.length < user_positions_i.length){
+		alert("You won");
+	}else{
+		alert("You lost");
+	}
+	$("#initialize").css("display","inline");
+	$("#div1").css("display","none");
+	$("#stats").css("display","none");
+	$("#console").css("display","none");
+}
+
+document.getElementById("btn1").onclick = function(){initialize2();};
