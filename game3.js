@@ -160,6 +160,7 @@ var select = function(i,j){
 }
 
 function set_game () {
+  game_on =0;
   $("#main_table").empty();	
   $("#n").html(n);
   $("#main_table").append("<h2>Enemy Map:</h2>");
