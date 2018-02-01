@@ -56,10 +56,7 @@ var update_stats = function(){
 }
 
 var initialize = function(){
-  enemy_positions_i = [];
-  enemy_positions_j = [];
-  enemy_bombed_i = [];
-  enemy_bombed_j = [];
+
   
   for(var i = 0; i<n; i++){
     enemy_positions_i[i] = Math.floor(Math.random()*N)+1;
@@ -161,6 +158,13 @@ var select = function(i,j){
 
 function set_game () {
   game_on =0;
+  user_positions_i = [];
+  user_positions_j = [];
+  enemy_positions_i = [];
+  enemy_positions_j = [];
+  enemy_bombed_i = [];
+  enemy_bombed_j = [];
+  
   $("#main_table").empty();	
   $("#n").html(n);
   $("#main_table").append("<h2>Enemy Map:</h2>");
